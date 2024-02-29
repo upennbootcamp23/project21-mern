@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  Jumbotron,
   Container,
   CardColumns,
   Card,
@@ -53,12 +52,11 @@ let SavedBooks = () => {
 
   return (
     <>
-      <Jumbotron fluid className="text-light bg-dark">
         <Container>
           <h1>Viewing saved books!</h1>
         </Container>
-      </Jumbotron>
-      <Container>
+
+  <Container>
         <h2>
           {userData.savedBooks.length
             ? `Viewing ${userData.savedBooks.length} saved ${
