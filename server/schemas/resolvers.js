@@ -34,5 +34,26 @@ const resolvers = {
             let token = signToken(user);
             return{token, user};
         },
+
+        addUser: async(args, parent) => {
+            const user = await User.create(args);
+            let token = signToken(user);
+            return{token, user};
+        },
+        removeBook: async(args, context, parent) => {
+            if(context.user) {
+                const updatedUser = await User.findOneAndUpdate(
+                    {$pull: {savedBooks: {bookID: args.bookID}}},
+                    { _id: context.user._id},
+                    {new: true}
+                    );
+
+                    return updatedUser
+            }
+
+            throw new AuthenticationError('You need to be logged in!');
+        }
     }
-}
+};
+
+module.exports = resolvers;
