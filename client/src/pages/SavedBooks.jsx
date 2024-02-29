@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
+import React from 'react'
 import {
+  Jumbotron,
   Container,
   Card,
   Button,
@@ -10,12 +12,17 @@ import {
 import { getMe, deleteBook } from '../utils/API';
 import Auth from '../utils/auth';
 import { removeBookId } from '../utils/localStorage';
+import { REMOVE_A_BOOK } from "../utils/mutations";
+import { GET_ME } from "../utils/queries";
 
 const SavedBooks = () => {
   const [userData, setUserData] = useState({});
 
+  let [removeBook, {error}] = useMutation(REMOVE_A_BOOK);
+  const {loading, data} = useQuery(GET_ME);
+
   // use this to determine if `useEffect()` hook needs to run again
-  const userDataLength = Object.keys(userData).length;
+  const userData = data?.me || {};
 
   useEffect(() => {
     const getUserData = async () => {
