@@ -6,11 +6,10 @@
   "proxy": "http://localhost:3001",
   "scripts": {
     "dev": "vite",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "vite start",
+    "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@apollo/react-hooks": "^4.0.0",
